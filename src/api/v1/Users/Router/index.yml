@@ -1,0 +1,44 @@
+list-user:
+  handler: src/api/v1/Users/Controllers/UserController.index
+  events:
+  - http:
+      path: users
+      method: get
+      authorizer: ${self:custom.authorizer}
+      cors: true
+create-user:
+  handler: src/api/v1/Users/Controllers/UserController.create
+  events:
+  - http:
+      path: users
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+getUserDetailForNotifications:
+  handler: src/api/v1/Users/Controllers/UserController.getUserDetailForNotifications
+getAllUserDataOfOrganization:
+  handler: src/api/v1/Users/Controllers/UserController.getAllUserDataOfOrganization
+show-user:
+  handler: src/api/v1/Users/Controllers/UserController.show
+  events:
+  - http:
+      path: users/{user_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-user:
+  handler: src/api/v1/Users/Controllers/UserController.update
+  events:
+  - http:
+      path: users/{user_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+delete-user:
+  handler: src/api/v1/Users/Controllers/UserController.destroy
+  events:
+  - http:
+      path: users
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer}

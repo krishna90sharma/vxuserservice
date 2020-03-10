@@ -1,0 +1,40 @@
+#list-thumbnails:
+#  handler: src/api/v1/Thumbnails/Controllers/ThumbnailsController.list
+#  events:
+#  - http:
+#      path: thumbnails
+#      method: get
+#      cors: true
+#      authorizer: ${self:custom.authorizer}
+show-thumbnails:
+  handler: src/api/v1/Thumbnails/Controllers/ThumbnailsController.show
+  events:
+  - http:
+      path: thumbnails/{thumbnail_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+create-thumbnails:
+  handler: src/api/v1/Thumbnails/Controllers/ThumbnailsController.create
+  events:
+  - http:
+      path: thumbnails
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-thumbnails:
+  handler: src/api/v1/Thumbnails/Controllers/ThumbnailsController.update
+  events:
+  - http:
+      path: thumbnails/{thumbnail_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+#destroy-thumbnails:
+#  handler: src/api/v1/Thumbnails/Controllers/ThumbnailsController.destroy
+#  events:
+#  - http:
+#      path: thumbnails
+#      method: delete
+#      cors: true
+#      authorizer: ${self:custom.authorizer}

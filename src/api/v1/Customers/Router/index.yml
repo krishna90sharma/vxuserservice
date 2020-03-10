@@ -1,0 +1,32 @@
+list-customers:
+  handler: src/api/v1/Customers/Controllers/CustomersController.index
+  events:
+  - http:
+      path: customers
+      method: get
+      authorizer: ${self:custom.authorizer}
+      cors: true
+create-customers:
+  handler: src/api/v1/Customers/Controllers/CustomersController.create
+  events:
+  - http:
+      path: customers
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-customers:
+  handler: src/api/v1/Customers/Controllers/CustomersController.show
+  events:
+  - http:
+      path: customers/{customer_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-customers:
+  handler: src/api/v1/Customers/Controllers/CustomersController.update
+  events:
+  - http:
+      path: customers/{customer_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}

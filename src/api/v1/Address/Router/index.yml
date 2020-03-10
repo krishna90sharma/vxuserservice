@@ -1,0 +1,48 @@
+list-address:
+  handler: src/api/v1/Address/Controllers/AddressController.list
+  events:
+  - http:
+      path: address/list
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+address-default:
+  handler: src/api/v1/Address/Controllers/AddressController.getDefault
+  events:
+  - http:
+      path: address/default/{id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-address:
+  handler: src/api/v1/Address/Controllers/AddressController.show
+  events:
+  - http:
+      path: address/{address_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+create-address:
+  handler: src/api/v1/Address/Controllers/AddressController.create
+  events:
+  - http:
+      path: address
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-address:
+  handler: src/api/v1/Address/Controllers/AddressController.update
+  events:
+  - http:
+      path: address/{address_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+destroy-address:
+  handler: src/api/v1/Address/Controllers/AddressController.destroy
+  events:
+  - http:
+      path: address
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer}

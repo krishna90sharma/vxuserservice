@@ -1,0 +1,8 @@
+summary:
+  handler: src/api/v1/Summary/Controllers/SummaryController.index
+  events:
+  - http:
+      path: summary
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}

@@ -1,0 +1,104 @@
+Resources:
+  GatewayResponseDefault4XX:
+    Type: 'AWS::ApiGateway::GatewayResponse'
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+        gatewayresponse.header.Access-Control-Allow-Credentials: "'false'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,PUT,DELETE,PATCH'"
+        gatewayresponse.header.Access-Control-Expose-Headers: "'Content-Length'"
+        gatewayresponse.header.Access-Control-Max-Age: "'600'"
+      ResponseType: DEFAULT_4XX
+      ResponseTemplates:
+        application/json: |
+          {
+            "statusCode": 400,
+            "data": null,
+            "message": $context.error.messageString
+          }
+      RestApiId:
+        Ref: 'ApiGatewayRestApi'
+  GatewayResponseDefault5XX:
+    Type: 'AWS::ApiGateway::GatewayResponse'
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+        gatewayresponse.header.Access-Control-Allow-Credentials: "'false'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,PUT,DELETE,PATCH'"
+        gatewayresponse.header.Access-Control-Expose-Headers: "'Content-Length'"
+        gatewayresponse.header.Access-Control-Max-Age: "'600'"
+      ResponseType: DEFAULT_5XX
+      ResponseTemplates:
+        application/json: |
+          {
+            "statusCode": 500,
+            "data": null,
+            "message": $context.error.messageString
+          }
+      RestApiId:
+        Ref: 'ApiGatewayRestApi'
+  ExpiredGatewayResponse:
+    Type: 'AWS::ApiGateway::GatewayResponse'
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+        gatewayresponse.header.Access-Control-Allow-Credentials: "'false'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,PUT,DELETE,PATCH'"
+        gatewayresponse.header.Access-Control-Expose-Headers: "'Content-Length'"
+        gatewayresponse.header.Access-Control-Max-Age: "'600'"
+      ResponseType: EXPIRED_TOKEN
+      ResponseTemplates:
+        application/json: |
+          {
+            "statusCode": 401,
+            "data": null,
+            "message": "Your session timed out. Please login again !"
+          }
+      RestApiId:
+        Ref: 'ApiGatewayRestApi'
+      StatusCode: '401'
+  AuthFailureGatewayResponse:
+    Type: 'AWS::ApiGateway::GatewayResponse'
+    Properties:
+      ResponseParameters:
+        gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+        gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+        gatewayresponse.header.Access-Control-Allow-Credentials: "'false'"
+        gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,PUT,DELETE,PATCH'"
+        gatewayresponse.header.Access-Control-Expose-Headers: "'Content-Length'"
+        gatewayresponse.header.Access-Control-Max-Age: "'600'"
+      ResponseTemplates:
+        application/json: |
+          {
+            "statusCode": 401,
+            "data": $context.error.messageString,
+            "message": "Your session timed out. Please login again"
+          }
+      ResponseType: UNAUTHORIZED
+      RestApiId:
+        Ref: 'ApiGatewayRestApi'
+      StatusCode: '401'
+  AuthorizerConfigurationErrorGatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'"
+          gatewayresponse.header.Access-Control-Allow-Credentials: "'false'"
+          gatewayresponse.header.Access-Control-Allow-Methods: "'OPTIONS,POST,GET,PUT,DELETE,PATCH'"
+          gatewayresponse.header.Access-Control-Expose-Headers: "'Content-Length'"
+          gatewayresponse.header.Access-Control-Max-Age: "'600'"
+        ResponseTemplates:
+            application/json: |
+              {
+                "statusCode": 401,
+                "data": $context.error.messageString,
+                "message": "Your session timed out. Please login again"
+              }
+        ResponseType: AUTHORIZER_CONFIGURATION_ERROR
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+        StatusCode: '401'

@@ -1,0 +1,52 @@
+login:
+  handler: src/api/v1/Auth/Controllers/AuthController.login
+  events:
+  - http:
+      path: login
+      method: post
+      cors: true
+logout:
+  handler: src/api/v1/Auth/Controllers/AuthController.logout
+  events:
+  - http:
+      path: logout
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+profile:
+  handler: src/api/v1/Auth/Controllers/AuthController.profile
+  events:
+  - http:
+      path: me
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+refreshToken:
+  handler: src/api/v1/Auth/Controllers/AuthController.refreshToken
+  events:
+  - http:
+      path: refresh-token
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+forgotPassword:
+  handler: src/api/v1/Auth/Controllers/AuthController.forgotPassword
+  events:
+  - http:
+      path: forgot-password/{email}
+      method: post
+      cors: true
+resetPassword:
+  handler: src/api/v1/Auth/Controllers/AuthController.resetPassword
+  events:
+  - http:
+      path: reset-password
+      method: post
+      cors: true
+checkTokenResetPassword:
+  handler: src/api/v1/Auth/Controllers/AuthController.checkTokenResetPassword
+  events:
+  - http:
+      path: validate-token
+      method: get
+      cors: true

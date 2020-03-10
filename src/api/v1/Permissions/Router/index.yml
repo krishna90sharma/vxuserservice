@@ -1,0 +1,40 @@
+list-permission:
+  handler: src/api/v1/Permissions/Controllers/PermissionsController.list
+  events:
+  - http:
+      path: permissions
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-permission:
+  handler: src/api/v1/Permissions/Controllers/PermissionsController.show
+  events:
+  - http:
+      path: permissions/{permission_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+create-permission:
+  handler: src/api/v1/Permissions/Controllers/PermissionsController.create
+  events:
+  - http:
+      path: permissions
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-permission:
+  handler: src/api/v1/Permissions/Controllers/PermissionsController.update
+  events:
+  - http:
+      path: permissions/{permission_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+destroy-permission:
+  handler: src/api/v1/Permissions/Controllers/PermissionsController.destroy
+  events:
+  - http:
+      path: permissions
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer}

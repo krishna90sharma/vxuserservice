@@ -1,0 +1,32 @@
+list-distributors:
+  handler: src/api/v1/Distributors/Controllers/DistributorsController.index
+  events:
+  - http:
+      path: distributors
+      method: get
+      authorizer: ${self:custom.authorizer}
+      cors: true
+create-distributors:
+  handler: src/api/v1/Distributors/Controllers/DistributorsController.create
+  events:
+  - http:
+      path: distributors
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-distributors:
+  handler: src/api/v1/Distributors/Controllers/DistributorsController.show
+  events:
+  - http:
+      path: distributors/{distributor_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-distributors:
+  handler: src/api/v1/Distributors/Controllers/DistributorsController.update
+  events:
+  - http:
+      path: distributors/{distributor_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}

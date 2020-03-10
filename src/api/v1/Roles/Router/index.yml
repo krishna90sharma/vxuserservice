@@ -1,0 +1,40 @@
+list-roles:
+  handler: src/api/v1/Roles/Controllers/RolesController.list
+  events:
+  - http:
+      path: roles
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-roles:
+  handler: src/api/v1/Roles/Controllers/RolesController.show
+  events:
+  - http:
+      path: roles/{role_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+create-roles:
+  handler: src/api/v1/Roles/Controllers/RolesController.create
+  events:
+  - http:
+      path: roles
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-roles:
+  handler: src/api/v1/Roles/Controllers/RolesController.update
+  events:
+  - http:
+      path: roles/{role_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+destroy-roles:
+  handler: src/api/v1/Roles/Controllers/RolesController.destroy
+  events:
+  - http:
+      path: roles
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer}

@@ -1,0 +1,73 @@
+list-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.list
+  events:
+  - http:
+      path: organizations
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+my-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.myOrganization
+  events:
+  - http:
+      path: organizations/my-organization
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+get-distributor-customer:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.listDistributorCustomer
+  events:
+  - http:
+      path: organizations/list-distributor-customer
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+show-by-user-id:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.getOrganizationByUserId
+  events:
+  - http:
+      path: organizations/users/{user_id}
+      method: get
+      cors: true
+show-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.show
+  events:
+  - http:
+      path: organizations/{organization_id}
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+list-users:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.listUser
+  events:
+  - http:
+      path: organizations/{organization_id}/users
+      method: get
+      cors: true
+      authorizer: ${self:custom.authorizer}
+create-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.create
+  events:
+  - http:
+      path: organizations
+      method: post
+      cors: true
+      authorizer: ${self:custom.authorizer}
+update-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.update
+  events:
+  - http:
+      path: organizations/{organization_id}
+      method: put
+      cors: true
+      authorizer: ${self:custom.authorizer}
+destroy-organizations:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.destroy
+  events:
+  - http:
+      path: organizations
+      method: delete
+      cors: true
+      authorizer: ${self:custom.authorizer}
+getAllWithKeyword:
+  handler: src/api/v1/Organizations/Controllers/OrganizationsController.getAllWithKeyword

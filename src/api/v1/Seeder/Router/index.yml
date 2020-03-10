@@ -1,0 +1,14 @@
+seeder-user:
+  handler: src/api/v1/Users/Controllers/UserController.seederData
+  events:
+  - http:
+      path: seeder/users
+      method: get
+      cors: true
+seeder-thumbnail:
+  handler: src/api/v1/Seeder/Controllers/SeederController.thumbnails
+  events:
+  - http:
+      path: seeder/thumbnails
+      method: get
+      cors: true

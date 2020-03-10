@@ -1,0 +1,23 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+#ide
+.idea/
+lib/
+
+#ENV
+.env
+#package-lock
+package-lock.json
+yarn.lock
+
+#Build
+.build/
+build/
